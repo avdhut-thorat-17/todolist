@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/syles.css">
+</head>
+<body>
+    <%- include("./components/header") %>
+
+    <!-- search bar -->
+    <form action="/add/todo" method="post" style="display: flex;justify-content: center;">
+        <input type="text" id="todo" name="todo" placeholder="Add task here" style="input{
+            flex: 1;
+            border:none;
+            outline:none;
+            background: transparent;
+            padding: 10px;
+            font-weight: 14px;
+            font-size: 18px;
+            text-align: center;
+        }">
+        <button type="submit" style="margin: 20px;">Add</button>
+    </form>
+
+    <hr>
+    <!-- views/index.ejs -->
+<!-- views/index.ejs -->
+<div class="list-group text-center">
+    <% todo.forEach(todos => { %>
+        <li href="#" class="list-group-item list-group-item-action">
+            <%= todos.todo %>
+            <a class="btn btn-danger" style="margin-left: 50px;" href="delete/todo/<%= todos._id %>">
+                Delete
+            </a>
+        </li>
+    <% }); %>
+</div>
+
+
+
+    <%- include("./components/footer") %>
+    <div class="container">
+        <% data.cards.forEach(card => { %>
+          <div class="card" style="width: 18rem;">
+            <img src="<%= card.img %>" class="card-img-top" alt="Card Image">
+            <div class="card-body">
+              <h5 class="card-title"><%= card.title %></h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="<%= card.link %>" class="btn btn-danger">Go to <%= card.title %></a>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+      
+</body>
+</html>
+
+
+
